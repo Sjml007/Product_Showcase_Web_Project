@@ -45,13 +45,18 @@ const containerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 }
+    transition: { staggerChildren: 0.15, delayChildren: 0.3 }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
+  hidden: { opacity: 0, y: 30, scale: 0.9 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { type: "spring", stiffness: 100, damping: 12 } 
+  }
 };
 
 export default function Features() {
@@ -62,7 +67,7 @@ export default function Features() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-block px-4 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary font-display text-xs tracking-widest mb-4"
+            className="inline-block px-4 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary font-display text-xs tracking-widest mb-4 neon-border shimmer"
           >
             ARSENAL OF FEATURES
           </motion.div>
@@ -72,7 +77,7 @@ export default function Features() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-display font-bold text-white mb-6"
           >
-            ENGINEERED TO <span className="text-gradient">WIN</span>
+            ENGINEERED TO <span className="text-gradient-alt glow-text-lg">WIN</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -87,34 +92,62 @@ export default function Features() {
         <motion.div 
           variants={containerVariants}
           initial="hidden"
-          animate="show"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {features.map((feature, i) => (
             <motion.div
               key={i}
               variants={itemVariants}
-              whileHover={{ y: -10 }}
-              className="relative group rounded-2xl glass-panel p-8 overflow-hidden isolate"
+              whileHover={{ y: -15, scale: 1.02 }}
+              className="relative group rounded-2xl glass-panel-premium p-8 overflow-hidden isolate hover-lift neon-border cursor-pointer"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              {/* Animated Background Gradient */}
+              <motion.div 
+                className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+              />
               
+              {/* Animated Border Glow on Hover */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: `radial-gradient(circle at 50% 50%, rgba(124,255,79,0.2), transparent 80%)`,
+                  pointerEvents: 'none'
+                }}
+              />
+
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-primary/50 group-hover:glow-box transition-all duration-300">
-                  <feature.icon className="w-8 h-8 text-white group-hover:text-primary transition-colors" />
-                </div>
+                <motion.div 
+                  whileHover={{ scale: 1.15, rotate: 10 }}
+                  className="w-16 h-16 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-primary/50 transition-all duration-300 neon-border"
+                >
+                  <feature.icon className="w-8 h-8 text-white group-hover:text-primary group-hover:glow-text transition-all duration-300" />
+                </motion.div>
                 
-                <h3 className="font-display text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                <h3 className="font-display text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300">
                   {feature.title}
                 </h3>
                 
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                <p className="font-body text-lg text-muted-foreground leading-relaxed group-hover:text-white/80 transition-colors duration-300">
                   {feature.desc}
                 </p>
               </div>
               
-              {/* Decorative corner element */}
-              <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Decorative corner glow */}
+              <motion.div 
+                className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                whileHover={{ scale: 1.5 }}
+              />
+
+              {/* Shimmer effect on hover */}
+              <motion.div
+                className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100"
+                whileHover={{ x: ['-100%', '100%'] }}
+                transition={{ duration: 0.6 }}
+              />
             </motion.div>
           ))}
         </motion.div>

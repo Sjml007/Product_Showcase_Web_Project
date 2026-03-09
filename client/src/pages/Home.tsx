@@ -1,21 +1,62 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { ChevronDown, Zap, Shield, Crosshair } from "lucide-react";
 import { Link } from "wouter";
+import { useState, useEffect } from "react";
 import PageTransition from "@/components/PageTransition";
 
 export default function Home() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const rotate = useTransform(scrollY, [0, 500], [0, -10]);
+  
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 300, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 300, damping: 30 });
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const offsetX = (clientX - centerX) * 0.02;
+      const offsetY = (clientY - centerY) * 0.02;
+      mouseX.set(offsetX);
+      mouseY.set(offsetY);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  if (!mounted) return null;
 
   return (
     <PageTransition className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Abstract Background Elements */}
+        {/* Premium Background Elements */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px]" />
+          <motion.div 
+            animate={{ 
+              x: [0, 20, -20, 0],
+              y: [0, 10, -10, 0]
+            }}
+            transition={{ duration: 8, repeat: Infinity }}
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/30 to-emerald-500/10 rounded-full blur-[120px]" 
+          />
+          <motion.div 
+            animate={{ 
+              x: [0, -15, 15, 0],
+              y: [0, -10, 10, 0]
+            }}
+            transition={{ duration: 10, repeat: Infinity, delay: 1 }}
+            className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/15 rounded-full blur-[100px]" 
+          />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -25,59 +66,98 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-left"
           >
-            <div className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary font-display text-sm tracking-widest mb-6 backdrop-blur-sm">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary font-display text-sm tracking-widest mb-6 backdrop-blur-sm neon-border"
+            >
               NEXT-GEN PERFORMANCE
-            </div>
-            <h1 className="text-5xl md:text-7xl font-display font-black text-white leading-tight mb-6">
-              UNLEASH <br />
-              <span className="text-gradient">GAMING POWER</span>
-            </h1>
-            <p className="text-xl font-body text-muted-foreground mb-8 max-w-lg">
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <h1 className="text-5xl md:text-7xl font-display font-black text-white leading-tight mb-6">
+                UNLEASH <br />
+                <span className="text-gradient-alt glow-text-lg">GAMING POWER</span>
+              </h1>
+            </motion.div>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-xl font-body text-muted-foreground mb-8 max-w-lg"
+            >
               The Acer Nitro V16 Lite. Desktop-class performance compressed into an ultra-sleek, portable chassis. Dominate anywhere.
-            </p>
-            <div className="flex flex-wrap gap-4">
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-wrap gap-4"
+            >
               <Link href="/contact">
                 <motion.button 
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(124,255,79,0.4)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-primary text-black font-display font-bold tracking-wider rounded-lg glow-box-hover transition-all"
+                  className="btn-premium px-8 py-4 bg-primary text-black font-display font-bold tracking-wider rounded-lg glow-box-hover-strong transition-all hover-lift"
                 >
                   PRE-ORDER NOW
                 </motion.button>
               </Link>
               <Link href="/features">
                 <motion.button 
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, borderColor: "rgba(124,255,79,0.6)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white/5 text-white border border-white/10 font-display font-bold tracking-wider rounded-lg hover:bg-white/10 transition-all"
+                  className="px-8 py-4 bg-white/5 text-white border border-white/10 font-display font-bold tracking-wider rounded-lg hover:bg-white/10 transition-all neon-border"
                 >
                   DISCOVER FEATURES
                 </motion.button>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
 
+          {/* Parallax Laptop Image */}
           <motion.div 
             style={{ y: y1 }}
             className="relative h-[400px] lg:h-[600px] w-full flex items-center justify-center"
           >
-            {/* abstract cinematic gaming laptop concept Unsplash */}
-            <motion.img 
-              animate={{ 
-                y: [0, -20, 0],
-                rotateZ: [0, 2, -2, 0]
-              }}
-              transition={{ 
-                duration: 6, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&q=80&w=2000" 
-              alt="Acer Nitro V16 Lite" 
-              className="relative z-10 max-w-[120%] lg:max-w-[150%] object-contain drop-shadow-[0_0_50px_rgba(124,255,79,0.3)]"
-            />
+            <motion.div
+              style={{ x: springX, y: springY }}
+              className="relative z-10"
+            >
+              {/* Glowing Light Effect */}
+              <motion.div 
+                animate={{ 
+                  opacity: [0.5, 1, 0.5],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-80 h-40 bg-gradient-to-t from-primary/40 to-transparent blur-3xl rounded-full"
+              />
+
+              <motion.img 
+                animate={{ 
+                  y: [0, -20, 0],
+                  rotateZ: [0, 2, -2, 0]
+                }}
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&q=80&w=2000" 
+                alt="Acer Nitro V16 Lite" 
+                className="relative z-10 max-w-[120%] lg:max-w-[150%] object-contain drop-shadow-[0_0_50px_rgba(124,255,79,0.4)] shimmer"
+              />
+            </motion.div>
             
-            {/* Decoration Rings */}
+            {/* Rotating Rings */}
             <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
               <motion.div 
                 animate={{ rotate: 360 }}
@@ -87,12 +167,18 @@ export default function Home() {
               <motion.div 
                 animate={{ rotate: -360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="w-[500px] h-[500px] border border-primary/10 rounded-full absolute border-dashed" 
+                className="w-[500px] h-[500px] border border-primary/15 rounded-full absolute border-dashed" 
+              />
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                className="w-[600px] h-[600px] border border-primary/5 rounded-full absolute" 
               />
             </div>
           </motion.div>
         </div>
 
+        {/* Scroll Indicator */}
         <motion.div 
           style={{ opacity }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50"
@@ -102,7 +188,7 @@ export default function Home() {
             animate={{ y: [0, 10, 0] }} 
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            <ChevronDown className="w-5 h-5 text-primary" />
+            <ChevronDown className="w-5 h-5 text-primary glow-text" />
           </motion.div>
         </motion.div>
       </section>
@@ -121,13 +207,17 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: i * 0.2 }}
-              className="glass-panel p-8 rounded-2xl flex items-start gap-6 group hover:border-primary/30 transition-colors"
+              whileHover={{ y: -5 }}
+              className="glass-panel-premium p-8 rounded-2xl flex items-start gap-6 group hover-lift cursor-pointer"
             >
-              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-primary/20 transition-all">
-                <item.icon className="w-7 h-7 text-primary" />
-              </div>
+              <motion.div 
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center shrink-0 neon-border"
+              >
+                <item.icon className="w-7 h-7 text-primary glow-text" />
+              </motion.div>
               <div>
-                <h3 className="font-display text-xl font-bold text-white mb-2">{item.title}</h3>
+                <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
                 <p className="font-body text-muted-foreground text-lg">{item.desc}</p>
               </div>
             </motion.div>
