@@ -69,13 +69,13 @@ export default function Performance() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative group hover-lift"
+            style={{ opacity }}
+            className="relative group hover-lift rounded-2xl overflow-hidden"
           >
-            <motion.img 
-              style={{ opacity }}
+            <img 
               src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000" 
               alt="Processor" 
-              className="rounded-2xl border border-white/10 opacity-70 grayscale contrast-125 neon-border group-hover:opacity-100 transition-all duration-500"
+              className="rounded-2xl border border-white/10 opacity-70 grayscale contrast-125 neon-border group-hover:opacity-100 transition-all duration-500 w-full"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay rounded-2xl" />
             <motion.div 
@@ -109,7 +109,7 @@ export default function Performance() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="glass-panel-premium p-6 rounded-xl neon-border"
+              className="glass-panel-premium p-6 rounded-xl neon-border hover-lift"
             >
               <StatBar label="MULTI-CORE RENDERING" value={95} colorClass="bg-primary" />
               <StatBar label="GAMING PERFORMANCE" value={92} colorClass="bg-primary" />
@@ -125,13 +125,13 @@ export default function Performance() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative lg:order-2 group hover-lift"
+            className="lg:order-2 relative group hover-lift rounded-2xl overflow-hidden"
+            style={{ opacity }}
           >
-            <motion.img 
-              style={{ opacity }}
+            <img 
               src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=1000" 
               alt="Graphics Card" 
-              className="rounded-2xl border border-white/10 opacity-80 neon-border group-hover:opacity-100 transition-all duration-500"
+              className="rounded-2xl border border-white/10 opacity-80 neon-border group-hover:opacity-100 transition-all duration-500 w-full"
             />
             <div className="absolute inset-0 bg-gradient-to-bl from-emerald-500/20 to-transparent mix-blend-overlay rounded-2xl" />
           </motion.div>
@@ -160,7 +160,7 @@ export default function Performance() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="glass-panel-premium p-6 rounded-xl neon-border"
+              className="glass-panel-premium p-6 rounded-xl neon-border hover-lift"
             >
               <StatBar label="RAY TRACING CAPABILITY" value={98} colorClass="bg-emerald-400" />
               <StatBar label="DLSS 3 FRAME GENERATION" value={100} colorClass="bg-emerald-400" />

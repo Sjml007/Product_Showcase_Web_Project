@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Keyboard, Monitor, Wind, HardDrive, Wifi, Feather } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
+import Tilt3D from "@/components/Tilt3D";
 
 const features = [
   {
@@ -67,7 +68,8 @@ export default function Features() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-block px-4 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary font-display text-xs tracking-widest mb-4 neon-border shimmer"
+            whileHover={{ scale: 1.05 }}
+            className="inline-block px-4 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary font-display text-xs tracking-widest mb-4 neon-border shimmer cursor-pointer"
           >
             ARSENAL OF FEATURES
           </motion.div>
@@ -100,54 +102,59 @@ export default function Features() {
             <motion.div
               key={i}
               variants={itemVariants}
-              whileHover={{ y: -15, scale: 1.02 }}
-              className="relative group rounded-2xl glass-panel-premium p-8 overflow-hidden isolate hover-lift neon-border cursor-pointer"
             >
-              {/* Animated Background Gradient */}
-              <motion.div 
-                className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-              />
-              
-              {/* Animated Border Glow on Hover */}
-              <motion.div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                  background: `radial-gradient(circle at 50% 50%, rgba(124,255,79,0.2), transparent 80%)`,
-                  pointerEvents: 'none'
-                }}
-              />
-
-              <div className="relative z-10">
-                <motion.div 
-                  whileHover={{ scale: 1.15, rotate: 10 }}
-                  className="w-16 h-16 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-primary/50 transition-all duration-300 neon-border"
+              <Tilt3D className="h-full">
+                <motion.div
+                  whileHover={{ y: -15, scale: 1.02 }}
+                  className="relative group rounded-2xl glass-panel-premium p-8 overflow-hidden isolate hover-lift neon-border cursor-pointer h-full"
                 >
-                  <feature.icon className="w-8 h-8 text-white group-hover:text-primary group-hover:glow-text transition-all duration-300" />
-                </motion.div>
-                
-                <h3 className="font-display text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                
-                <p className="font-body text-lg text-muted-foreground leading-relaxed group-hover:text-white/80 transition-colors duration-300">
-                  {feature.desc}
-                </p>
-              </div>
-              
-              {/* Decorative corner glow */}
-              <motion.div 
-                className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                whileHover={{ scale: 1.5 }}
-              />
+                  {/* Animated Background Gradient */}
+                  <motion.div 
+                    className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  />
+                  
+                  {/* Animated Border Glow on Hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background: `radial-gradient(circle at 50% 50%, rgba(124,255,79,0.2), transparent 80%)`,
+                      pointerEvents: 'none'
+                    }}
+                  />
 
-              {/* Shimmer effect on hover */}
-              <motion.div
-                className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100"
-                whileHover={{ x: ['-100%', '100%'] }}
-                transition={{ duration: 0.6 }}
-              />
+                  <div className="relative z-10">
+                    <motion.div 
+                      whileHover={{ scale: 1.2, rotate: 15 }}
+                      className="w-16 h-16 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-primary/50 transition-all duration-300 neon-border"
+                    >
+                      <feature.icon className="w-8 h-8 text-white group-hover:text-primary group-hover:glow-text transition-all duration-300" />
+                    </motion.div>
+                    
+                    <h3 className="font-display text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+                    
+                    <p className="font-body text-lg text-muted-foreground leading-relaxed group-hover:text-white/80 transition-colors duration-300">
+                      {feature.desc}
+                    </p>
+                  </div>
+                  
+                  {/* Decorative corner glow */}
+                  <motion.div 
+                    className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    whileHover={{ scale: 1.5 }}
+                  />
+
+                  {/* Shimmer effect on hover */}
+                  <motion.div
+                    className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100"
+                    whileHover={{ x: ['-100%', '100%'] }}
+                    transition={{ duration: 0.6 }}
+                  />
+                </motion.div>
+              </Tilt3D>
             </motion.div>
           ))}
         </motion.div>
