@@ -81,7 +81,7 @@ export default function Specifications() {
               className="w-2 h-2 rounded-full bg-primary"
               style={{ boxShadow: "0 0 6px rgba(74,222,128,0.8)" }} />
             
-            <span className="font-display text-xs tracking-[0.2em] text-white/50">FULL SPECIFICATIONS</span>
+            <span className="font-display text-xs tracking-[0.2em] text-white/70">FULL SPECIFICATIONS</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-display font-black text-white mb-6 text-gradient-alt glow-text-lg">
             TECH SPECS
@@ -150,7 +150,7 @@ export default function Specifications() {
                   <motion.div
                   animate={{ rotate: expandedIdx === index ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className="text-white/20 group-hover:text-white/50 transition-colors shrink-0">
+                  className="text-white/20 group-hover:text-white/70 transition-colors shrink-0">
                   
                     <ChevronDown className="w-5 h-5" />
                   </motion.div>

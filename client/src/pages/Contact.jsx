@@ -68,12 +68,12 @@ export default function Contact() {
             <SectionTransition direction="left">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/2 mb-6">
                 <Sparkles className="w-4 h-4 text-primary" />
-                <span className="font-display text-xs tracking-[0.2em] text-white/50">LIMITED LAUNCH EDITION</span>
+                <span className="font-display text-xs tracking-[0.2em] text-white/70">LIMITED LAUNCH EDITION</span>
               </div>
               <h1 className="text-5xl md:text-6xl font-display font-black text-white uppercase mb-4 text-gradient-alt glow-text-xl">
                 Secure Yours
               </h1>
-              <p className="font-body text-xl text-white/50 mb-12 leading-relaxed">
+              <p className="font-body text-xl text-white/70 mb-12 leading-relaxed">
                 Pre-order the Acer Nitro V16 Lite today and be the first to experience portable dominance.
               </p>
             </SectionTransition>
@@ -109,7 +109,7 @@ export default function Contact() {
 
 
               <h3 className="font-display text-2xl font-bold text-white mb-2">Nitro V16 Lite</h3>
-              <p className="text-white/40 font-body text-sm mb-8">RTX 4060 · Ryzen 7 · 16GB RAM · 1TB SSD</p>
+              <p className="text-white/60 font-body text-sm mb-8">RTX 4060 · Ryzen 7 · 16GB RAM · 1TB SSD</p>
 
               {/* Pricing */}
               <div className="flex items-end gap-4 mb-8 pb-8 border-b border-white/5">
@@ -136,7 +136,7 @@ export default function Contact() {
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
                     whileHover={{ x: 4 }}
-                    className="flex items-center gap-3 text-white/60 hover:text-white transition-colors cursor-default">
+                    className="flex items-center gap-3 text-white/80 hover:text-white transition-colors cursor-default">
 
                     <motion.div whileHover={{ scale: 1.25, rotate: 10 }}>
                       <benefit.icon className="w-5 h-5 text-primary glow-text shrink-0" />
@@ -188,7 +188,7 @@ export default function Contact() {
                       <CheckCircle2 className="w-12 h-12 text-primary glow-text" />
                     </motion.div>
                     <h4 className="font-display text-3xl text-white mb-3 text-gradient-alt">Request Received</h4>
-                    <p className="font-body text-white/50 max-w-xs mx-auto">
+                    <p className="font-body text-white/70 max-w-xs mx-auto">
                       We'll contact you shortly to complete your purchase setup.
                     </p>
                     <motion.button

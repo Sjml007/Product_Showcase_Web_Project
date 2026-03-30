@@ -114,7 +114,7 @@ export default function Features() {
           </SectionTransition>
 
           <SectionTransition delay={0.2}>
-            <p className="font-body text-xl text-white/50 max-w-xl mx-auto leading-relaxed">
+            <p className="font-body text-xl text-white/70 max-w-xl mx-auto leading-relaxed">
               Every component, every curve, and every feature has been meticulously crafted to give you the ultimate competitive advantage.
             </p>
           </SectionTransition>
@@ -201,7 +201,7 @@ export default function Features() {
                     <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-white transition-colors duration-300">
                       {feature.title}
                     </h3>
-                    <p className="font-body text-white/50 leading-relaxed group-hover:text-white/70 transition-colors duration-300">
+                    <p className="font-body text-white/70 leading-relaxed group-hover:text-white/70 transition-colors duration-300">
                       {feature.desc}
                     </p>
                   </div>

@@ -122,7 +122,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="text-5xl md:text-6xl xl:text-7xl font-display font-black text-white leading-[0.95] mb-6">
+              className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-display font-black text-white leading-[0.95] mb-6">
               
               UNLEASH{" "}
               <br />
@@ -140,7 +140,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl font-body text-white/60 mb-10 max-w-md leading-relaxed">
+              className="text-lg md:text-xl font-body text-white/80 mb-10 max-w-md leading-relaxed">
               
               The Acer Nitro V16 Lite. Desktop-class performance compressed into an ultra-sleek, portable chassis.{" "}
               <span className="text-primary/80">Dominate anywhere.</span>
@@ -200,7 +200,7 @@ export default function Home() {
                   <div className="font-display text-xl font-black text-primary glow-text">
                     <AnimatedCounter target={stat.value} unit={stat.unit} />
                   </div>
-                  <div className="font-body text-xs text-white/40 tracking-widest uppercase mt-1">{stat.label}</div>
+                  <div className="font-body text-xs text-white/60 tracking-widest uppercase mt-1">{stat.label}</div>
                 </motion.div>
               )}
             </motion.div>
@@ -209,7 +209,7 @@ export default function Home() {
           {/* Right: CSS 3D Laptop */}
           <motion.div
             style={{ y: heroParallax, scale: laptopScale }}
-            className="relative h-[480px] lg:h-[600px] w-full flex items-center justify-center">
+            className="relative h-[300px] sm:h-[400px] lg:h-[600px] w-full flex items-center justify-center">
             
             {/* Outer ambient glow behind the laptop */}
             <motion.div
@@ -253,7 +253,7 @@ export default function Home() {
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer z-50"
           onClick={() => window.scrollTo({ top: window.innerHeight * 0.9, behavior: 'smooth' })}>
           
-          <span className="font-display text-[11px] font-bold tracking-[0.5em] text-white/70 mb-2 drop-shadow-md">
+          <span className="font-display text-[11px] font-bold tracking-[0.5em] text-white/90 mb-2 drop-shadow-md">
             SCROLL DOWN
           </span>
           <motion.div
@@ -291,7 +291,7 @@ export default function Home() {
           <SectionTransition className="text-center mb-16">
             <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/2 backdrop-blur-sm mb-4">
               <TrendingUp className="w-4 h-4 text-primary" />
-              <span className="font-display text-xs tracking-[0.2em] text-white/50">KEY SPECIFICATIONS</span>
+              <span className="font-display text-xs tracking-[0.2em] text-white/70">KEY SPECIFICATIONS</span>
             </div>
           </SectionTransition>
 
@@ -324,7 +324,7 @@ export default function Home() {
                       <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">
                         {item.title}
                       </h3>
-                      <p className="font-body text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
+                      <p className="font-body text-white/70 leading-relaxed group-hover:text-white/90 transition-colors">
                         {item.desc}
                       </p>
                     </div>
@@ -357,7 +357,7 @@ export default function Home() {
                   <div className="font-display text-3xl font-black text-primary glow-text relative z-10">
                     {stat.value}<span className="text-xl">{stat.unit}</span>
                   </div>
-                  <div className="font-body text-xs text-white/40 uppercase tracking-widest mt-1 relative z-10">{stat.label}</div>
+                  <div className="font-body text-xs text-white/60 uppercase tracking-widest mt-1 relative z-10">{stat.label}</div>
                 </motion.div>
               </SectionTransition>
             )}

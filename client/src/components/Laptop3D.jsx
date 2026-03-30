@@ -233,7 +233,7 @@ export default function Laptop3D({ className = "", mouseX, mouseY }) {
                         className="flex items-center gap-1.5">
                         
                                                 <span className="font-display text-[8px] tracking-widest" style={{ color: NEON }}>●</span>
-                                                <span className="font-display text-[8px] tracking-widest text-white/50">REC</span>
+                                                <span className="font-display text-[8px] tracking-widest text-white/70">REC</span>
                                             </motion.div>
                                             {/* FPS readout */}
                                             <div className="flex items-baseline gap-0.5">

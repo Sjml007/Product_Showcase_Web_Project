@@ -18,7 +18,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
-  const navOpacity = useTransform(scrollY, [0, 100], [0.7, 1]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -28,12 +27,11 @@ export default function Navbar() {
 
   return (
     <motion.header
-      style={{ opacity: navOpacity }}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled ?
-        "py-3 backdrop-blur-2xl border-b border-white/5" :
-        "py-6 bg-transparent"
+        "py-3 backdrop-blur-2xl border-b border-white/10" :
+        "py-6 bg-gradient-to-b from-black/80 to-transparent"
       )}>
       
       {/* Glassy background on scroll */}
@@ -41,8 +39,8 @@ export default function Navbar() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="absolute inset-0 bg-black/70 backdrop-blur-2xl border-b border-primary/10"
-        style={{ boxShadow: "0 4px 30px rgba(0,0,0,0.5), 0 1px 0 rgba(74,222,128,0.1)" }} />
+        className="absolute inset-0 bg-black/90 backdrop-blur-3xl border-b border-primary/20"
+        style={{ boxShadow: "0 4px 30px rgba(0,0,0,0.8), 0 1px 0 rgba(74,222,128,0.2)" }} />
 
       }
 
@@ -104,7 +102,7 @@ export default function Navbar() {
                   href={link.href}
                   className={cn(
                     "relative font-display text-sm uppercase tracking-wider transition-colors duration-200 py-2 group",
-                    isActive ? "text-primary" : "text-white/60 hover:text-white"
+                    isActive ? "text-primary" : "text-white/80 hover:text-white"
                   )}>
                   
                   {isActive &&
@@ -174,10 +172,10 @@ export default function Navbar() {
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="md:hidden absolute top-full left-0 right-0 overflow-hidden"
           style={{
-            background: "rgba(5,5,5,0.95)",
+            background: "rgba(5,5,5,1)",
             backdropFilter: "blur(20px)",
-            borderBottom: "1px solid rgba(74,222,128,0.1)",
-            boxShadow: "0 20px 40px rgba(0,0,0,0.6)"
+            borderBottom: "1px solid rgba(74,222,128,0.2)",
+            boxShadow: "0 20px 40px rgba(0,0,0,0.8)"
           }}>
           
             <div className="flex flex-col p-6 gap-2">

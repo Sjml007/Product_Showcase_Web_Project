@@ -95,7 +95,7 @@ export default function Performance() {
           <SectionTransition>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/2 mb-6">
               <Zap className="w-4 h-4 text-primary" />
-              <span className="font-display text-xs tracking-[0.2em] text-white/50">BENCHMARK PERFORMANCE</span>
+              <span className="font-display text-xs tracking-[0.2em] text-white/70">BENCHMARK PERFORMANCE</span>
             </div>
           </SectionTransition>
           <SectionTransition delay={0.1}>
@@ -104,7 +104,7 @@ export default function Performance() {
             </h1>
           </SectionTransition>
           <SectionTransition delay={0.2}>
-            <p className="font-body text-xl text-white/50 max-w-xl mx-auto">
+            <p className="font-body text-xl text-white/70 max-w-xl mx-auto">
               Shatter benchmarks with desktop-tier silicon architecture.
             </p>
           </SectionTransition>
@@ -121,7 +121,7 @@ export default function Performance() {
                 
                   <spec.icon className="w-4 h-4 text-primary" />
                   <span className="font-display text-sm font-bold text-white">{spec.value}</span>
-                  <span className="font-body text-xs text-white/40">{spec.label}</span>
+                  <span className="font-body text-xs text-white/60">{spec.label}</span>
                 </motion.div>
               )}
             </div>
@@ -172,7 +172,7 @@ export default function Performance() {
               <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4 text-gradient-alt glow-text">
                 AMD Ryzen™ 7 8845HS
               </h2>
-              <p className="font-body text-lg text-white/50 mb-8 leading-relaxed">
+              <p className="font-body text-lg text-white/70 mb-8 leading-relaxed">
                 Built on the incredible Zen 4 architecture, experience lightning-fast speeds for intense gaming, streaming, and content creation without breaking a sweat.
               </p>
 
@@ -209,7 +209,7 @@ export default function Performance() {
               style={{ textShadow: "0 0 20px rgba(6,182,212,0.6)" }}>
                 NVIDIA® GeForce RTX™ 4060
               </h2>
-              <p className="font-body text-lg text-white/50 mb-8 leading-relaxed">
+              <p className="font-body text-lg text-white/70 mb-8 leading-relaxed">
                 Powered by the ultra-efficient NVIDIA Ada Lovelace architecture, bringing a quantum leap in performance with AI-powered DLSS 3 and full ray tracing.
               </p>
 
