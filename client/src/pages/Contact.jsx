@@ -223,7 +223,7 @@ export default function Contact() {
                               required
                               type="text"
                               name={field.label.toLowerCase().replace(" ", "_")}
-                              className="w-full bg-white/3 border border-white/8 rounded-lg px-4 py-3 text-white font-body text-sm transition-all placeholder:text-white/20"
+                              className="w-full bg-black/40 border border-white/8 rounded-lg px-4 py-3 text-white font-body text-sm transition-all placeholder:text-white/20 focus:bg-black/60"
                               placeholder={field.placeholder} />
 
                           </div>
@@ -237,18 +237,18 @@ export default function Contact() {
                         required
                         type="email"
                         name="email"
-                        className="w-full bg-white/3 border border-white/8 rounded-lg px-4 py-3 text-white font-body text-sm transition-all placeholder:text-white/20"
+                        className="w-full bg-black/40 border border-white/8 rounded-lg px-4 py-3 text-white font-body text-sm transition-all placeholder:text-white/20 focus:bg-black/60"
                         placeholder="john@example.com" />
 
                     </div>
 
                     <div className="space-y-1.5">
                       <label className="font-display text-[10px] text-white/30 uppercase tracking-widest">Region</label>
-                      <select name="region" className="w-full bg-black/40 border border-white/8 rounded-lg px-4 py-3 text-white/70 font-body text-sm appearance-none transition-all">
-                        <option value="India">India</option>
-                        <option value="Asia Pacific">Asia Pacific</option>
-                        <option value="Europe">Europe</option>
-                        <option value="North America">North America</option>
+                      <select name="region" className="w-full bg-black/40 border border-white/8 rounded-lg px-4 py-3 text-white/70 font-body text-sm appearance-none transition-all focus:bg-black/60">
+                        <option value="India" className="bg-zinc-900 text-white">India</option>
+                        <option value="Asia Pacific" className="bg-zinc-900 text-white">Asia Pacific</option>
+                        <option value="Europe" className="bg-zinc-900 text-white">Europe</option>
+                        <option value="North America" className="bg-zinc-900 text-white">North America</option>
                       </select>
                     </div>
 
